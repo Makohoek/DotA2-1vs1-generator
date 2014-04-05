@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-class HeroDatabase
+public class HeroDatabase
 {
    private final ArrayList<String> heroList;
 

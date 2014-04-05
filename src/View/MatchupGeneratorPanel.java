@@ -28,7 +28,6 @@ public class MatchupGeneratorPanel
       this.controller = controller;
    }
 
-
    public JPanel getMainPanel()
    {
       return mainPanel;
