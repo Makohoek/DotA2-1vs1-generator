@@ -16,6 +16,9 @@ shredder
 bristleback
 tusk
 elder_titan
+legion_commander
+earth_spirit
+phoenix
 antimage
 drow_ranger
 juggernaut
@@ -33,6 +36,7 @@ gyrocopter
 lone_druid
 naga_siren
 troll_warlord
+ember_spirit
 crystal_maiden
 puck
 storm_spirit
@@ -81,6 +85,7 @@ meepo
 nyx_assassin
 slark
 medusa
+terrorblade
 bane
 lich
 lion
