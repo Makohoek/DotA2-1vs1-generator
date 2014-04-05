@@ -1,19 +1,12 @@
 package View;
 
 import Controller.MatchupController;
-import Model.Matchup;
 import Event.MatchupChangedEvent;
-import Model.MatchupsModel;
+import Model.Matchup;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 19/09/13
- * Time: 14:21
- */
 public class MatchupView implements MatchupListenerIface
 {
    private final JFrame frame;

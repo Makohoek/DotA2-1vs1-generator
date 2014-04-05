@@ -2,12 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 18/09/13
- * Time: 19:05
- */
 public class MatchupDatabase
 {
    private final ArrayList<Matchup> database;

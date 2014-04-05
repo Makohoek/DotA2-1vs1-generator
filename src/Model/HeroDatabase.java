@@ -2,19 +2,12 @@ package Model;
 
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 19/09/13
- * Time: 10:43
- */
 class HeroDatabase
 {
    private final ArrayList<String> heroList;
 
    public HeroDatabase()
    {
-
       String pathToHeroListFile = "config/HeroDatabase.txt";
       heroList = readHeroListFromFile(pathToHeroListFile);
    }

@@ -1,11 +1,5 @@
 package Model;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 18/09/13
- * Time: 19:04
- */
 public class Matchup
 {
    public final Hero radiant;

@@ -1,13 +1,5 @@
 package Model;
 
-import java.io.IOException;
-
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 30/09/13
- * Time: 17:42
- */
 public class MatchupConfigReader extends ConfigReader
 {
    private String radiantHeroName;

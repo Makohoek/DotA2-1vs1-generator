@@ -2,7 +2,6 @@ package View;
 
 import Controller.MatchupController;
 import Model.Matchup;
-import Model.MatchupsModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 18/09/13
- * Time: 19:55
- */
 public class MatchupGeneratorPanel
 {
    private JButton GenerateButton;
@@ -73,8 +66,6 @@ public class MatchupGeneratorPanel
 
       addedHeroesList.add(radiantHeroPanel);
       addedHeroesList.add(direHeroPanel);
-
-
    }
 
 }

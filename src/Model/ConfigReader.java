@@ -5,12 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 19/09/13
- * Time: 11:04
- */
 class ConfigReader
 {
    private FileReader fileReader = null;

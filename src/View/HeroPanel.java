@@ -4,12 +4,6 @@ import Model.Hero;
 
 import javax.swing.*;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 18/09/13
- * Time: 20:01
- */
 public class HeroPanel
 {
    private JLabel HeroNameField;

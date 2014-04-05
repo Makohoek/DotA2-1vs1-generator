@@ -8,12 +8,6 @@ import View.MatchupView;
 
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 19/09/13
- * Time: 16:40
- */
 public class MatchupController
 {
    private final MatchupView view;
@@ -25,11 +19,8 @@ public class MatchupController
    public MatchupController(MatchupsModel model)
    {
       this.model = model;
-
       view = new MatchupView(this);
-
       addListenersToModel();
-
       buildRandomMatchupPicker();
    }
 

@@ -3,12 +3,6 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 18/09/13
- * Time: 19:04
- */
 public class RandomMatchupPicker
 {
    private final MatchupDatabase matchupDatabase;

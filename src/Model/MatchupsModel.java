@@ -7,12 +7,6 @@ import View.MatchupView;
 import javax.swing.event.EventListenerList;
 import java.util.ArrayList;
 
-/**
- * Mattijs Korpershoek
- * <mattijs.korpershoek@gmail.com>
- * Date: 19/09/13
- * Time: 14:11
- */
 public class MatchupsModel
 {
    private ArrayList<Matchup> matchups;
