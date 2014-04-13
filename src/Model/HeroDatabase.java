@@ -4,47 +4,42 @@ import java.util.ArrayList;
 
 public class HeroDatabase
 {
-   private final ArrayList<String> heroList;
+   private final ArrayList<Hero> _heroList;
 
    public HeroDatabase()
    {
-      String pathToHeroListFile = "config/HeroDatabase.txt";
-      heroList = readHeroListFromFile(pathToHeroListFile);
+      _heroList = new ArrayList<Hero>();
    }
 
-   public boolean contains(String heroName)
+   public boolean contains(Hero hero)
    {
-      for (String hero : heroList)
+      for (Hero currentHero : _heroList)
       {
-         if (hero.compareToIgnoreCase(heroName) == 0)
+         if (currentHero.equals(hero))
             return true;
       }
-
       return false;
    }
 
    @Override
    public String toString()
    {
-      return heroList.toString();
+      return _heroList.toString();
    }
 
-   private ArrayList<String> readHeroListFromFile(String pathToHeroListFile)
+   public void addHero(Hero hero)
    {
-      ArrayList<String> resultList = new ArrayList<String>();
-      ConfigReader heroConfigReader = new ConfigReader(pathToHeroListFile);
-      heroConfigReader.openConfigFile();
-
-      String currentHero;
-      while ((currentHero = heroConfigReader.readLine()) != null)
-      {
-         resultList.add(currentHero);
-      }
-
-      heroConfigReader.closeConfigFile();
-
-      return resultList;
+      _heroList.add(hero);
    }
 
-
+   //TODO: unit test with mocks
+   public void addHeroesFromGateway(HeroConfigurationGateway heroConfigurationGateway)
+   {
+      heroConfigurationGateway.open();
+      while (heroConfigurationGateway.isFinished() == false)
+      {
+         addHero(heroConfigurationGateway.nextHero());
+      }
+      heroConfigurationGateway.close();
+   }
 }

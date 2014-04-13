@@ -4,66 +4,55 @@ import java.util.ArrayList;
 
 public class MatchupDatabase
 {
-   private final ArrayList<Matchup> database;
+   private final ArrayList<Matchup> _matchupDatabase;
+   private HeroDatabase _heroDatabase;
 
-   public MatchupDatabase()
+   public MatchupDatabase(HeroDatabase heroDatabase)
    {
-      database = new ArrayList<Matchup>();
+      _heroDatabase = heroDatabase;
+      _matchupDatabase = new ArrayList<Matchup>();
    }
 
-   public void ReadFromConfigurationFile()
+   public void AddMatchupsFromGateway(MatchupConfigurationGateway matchupConfigReader)
    {
-      String pathToMatchupDatabase = ("config/MatchupDatabase.txt");
-      MatchupConfigReader matchupConfigReader = new MatchupConfigReader(pathToMatchupDatabase);
-      matchupConfigReader.openConfigFile();
-      HeroDatabase heroDatabase = new HeroDatabase();
-
-      while (matchupConfigReader.readLine() != null)
+      matchupConfigReader.open();
+      while (matchupConfigReader.isFinished() == false)
       {
-         AddMatchupToDatabase(matchupConfigReader, heroDatabase);
+         Matchup currentMatchup = matchupConfigReader.getNextMatchup();
+         addMatchup(currentMatchup);
       }
-
-      matchupConfigReader.closeConfigFile();
-   }
-
-   private void AddMatchupToDatabase(MatchupConfigReader matchupConfigReader, HeroDatabase heroDatabase)
-   {
-      String radiantHeroName = matchupConfigReader.getCurrentRadiantHeroName();
-      String direHeroName = matchupConfigReader.getCurrentDireHeroName();
-
-      if (!(heroDatabase.contains(radiantHeroName) && heroDatabase.contains(direHeroName)))
-      {
-        System.err.println("The hero database does not contains a hero from the specified matchup("+radiantHeroName+","+direHeroName+")");
-      }
-
-      Hero radiantHero = new Hero(radiantHeroName);
-      Hero direHero = new Hero(direHeroName);
-      Matchup newMatchup = new Matchup(radiantHero, direHero);
-      Matchup mirroredNewMatchup = new Matchup(direHero, radiantHero);
-
-      if (contains(newMatchup) || contains(mirroredNewMatchup))
-      {
-         System.err.println("The matchup database already contains this matchup("+radiantHeroName+","+direHeroName+")");
-      }
-      else
-      {
-         database.add(newMatchup);
-      }
+      matchupConfigReader.close();
    }
 
    public int size()
    {
-      return database.size();
+      return _matchupDatabase.size();
    }
 
    public Matchup get(int index)
    {
-      return database.get(index);
+      return _matchupDatabase.get(index);
+   }
+
+   protected boolean addMatchup(Matchup matchup)
+   {
+      assert (_heroDatabase.contains(matchup._radiantHero));
+      assert (_heroDatabase.contains(matchup._direHero));
+
+      if (contains(matchup))
+      {
+         System.err.println("Could not add the matchup:" + matchup);
+         return false;
+      } else
+      {
+         _matchupDatabase.add(matchup);
+         return true;
+      }
    }
 
    private boolean contains(Matchup other)
    {
-      for (Matchup matchup: database)
+      for (Matchup matchup : _matchupDatabase)
       {
          if (matchup.equals(other))
             return true;

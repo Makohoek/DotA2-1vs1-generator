@@ -9,36 +9,34 @@ import java.util.ArrayList;
 
 public class MatchupsModel
 {
-   private ArrayList<Matchup> matchups;
-   private final EventListenerList listenerList;
+   private ArrayList<Matchup> _matchups;
+   private final EventListenerList _listenerList;
 
    public MatchupsModel()
    {
-      listenerList = new EventListenerList();
+      _listenerList = new EventListenerList();
    }
 
    public void setMatchups(ArrayList<Matchup> matchups)
    {
-      this.matchups = matchups;
+      this._matchups = matchups;
       fireMatchupChanged();
    }
 
    public void addMatchupListener(MatchupView listener)
    {
-      listenerList.add(MatchupListenerIface.class, listener);
+      _listenerList.add(MatchupListenerIface.class, listener);
    }
 
    private void fireMatchupChanged()
    {
-      MatchupListenerIface[] matchupListeners = listenerList.getListeners(MatchupListenerIface.class);
+      MatchupListenerIface[] matchupListeners = _listenerList.getListeners(MatchupListenerIface.class);
 
       for (MatchupListenerIface listener : matchupListeners)
       {
-         listener.matchupsChanged(new MatchupChangedEvent(this, matchups));
+         listener.matchupsChanged(new MatchupChangedEvent(this, _matchups));
       }
    }
-
-
 
 
 }

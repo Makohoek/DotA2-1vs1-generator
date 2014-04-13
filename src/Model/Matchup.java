@@ -2,19 +2,19 @@ package Model;
 
 public class Matchup
 {
-   public final Hero radiant;
-   public final Hero dire;
+   public final Hero _radiantHero;
+   public final Hero _direHero;
 
-   public Matchup(Hero radiant, Hero dire)
+   public Matchup(Hero radiantHero, Hero direHero)
    {
-      this.radiant = radiant;
-      this.dire = dire;
+      this._radiantHero = radiantHero;
+      this._direHero = direHero;
    }
 
    @Override
    public String toString()
    {
-      return radiant+" vs "+dire;
+      return _radiantHero + " vs " + _direHero;
    }
 
    @Override
@@ -25,8 +25,10 @@ public class Matchup
          return false;
       }
 
-      Matchup otherMatchup = (Matchup)obj;
+      Matchup otherMatchup = (Matchup) obj;
+      boolean equals = _radiantHero.equals(otherMatchup._radiantHero) && _direHero.equals(otherMatchup._direHero);
+      boolean invertedEquals = _radiantHero.equals(otherMatchup._direHero) && _direHero.equals(otherMatchup._radiantHero);
 
-      return radiant.equals(otherMatchup.radiant) && dire.equals(otherMatchup.dire);
+      return equals || invertedEquals;
    }
 }

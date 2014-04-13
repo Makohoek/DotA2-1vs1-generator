@@ -2,21 +2,17 @@ package Model;
 
 public class Hero
 {
-   private final String name;
+   protected final String _name;
 
    public Hero(String heroName)
    {
-      HeroDatabase heroDatabase = new HeroDatabase();
-      if (heroDatabase.contains(heroName))
-         name = heroName;
-      else
-         name = "Invalid Model.Hero";
+      _name = heroName;
    }
 
    @Override
    public String toString()
    {
-      return name;
+      return _name;
    }
 
    @Override
@@ -28,6 +24,6 @@ public class Hero
       }
       Hero other = (Hero) obj;
 
-      return name.compareTo(other.name) == 0;
+      return _name.compareTo(other._name) == 0;
    }
 }

@@ -5,19 +5,17 @@ import java.util.Random;
 
 public class RandomMatchupPicker
 {
-   private final MatchupDatabase matchupDatabase;
+   private final MatchupDatabase _matchupDatabase;
 
    public RandomMatchupPicker(MatchupDatabase heroMatchupDatabase)
    {
-      this.matchupDatabase = heroMatchupDatabase;
+      this._matchupDatabase = heroMatchupDatabase;
    }
 
    public ArrayList<Matchup> pickRandomMatches(int numberOfRandomMatches)
    {
-      if (numberOfRandomMatches < 1 || numberOfRandomMatches > matchupDatabase.size())
-      {
-         System.err.println("the HeroMatchupDatabase is empty or the number of matches asked is too big");
-      }
+      assert (numberOfRandomMatches > 0);
+      assert (numberOfRandomMatches <= _matchupDatabase.size());
 
       ArrayList<Integer> randomIndexes = new ArrayList<Integer>();
       for (int i = 0; i < numberOfRandomMatches; i++)
@@ -27,9 +25,9 @@ public class RandomMatchupPicker
       }
 
       ArrayList<Matchup> randomMatches = new ArrayList<Matchup>();
-      for(Integer index: randomIndexes)
+      for (Integer index : randomIndexes)
       {
-         Matchup selectedMatchup = matchupDatabase.get(index);
+         Matchup selectedMatchup = _matchupDatabase.get(index);
          randomMatches.add(selectedMatchup);
       }
 
@@ -41,7 +39,7 @@ public class RandomMatchupPicker
       Random r = new Random();
 
       Integer randomIndexInteger;
-      int indexLimit = matchupDatabase.size();
+      int indexLimit = _matchupDatabase.size();
       do
       {
          randomIndexInteger = r.nextInt(indexLimit);
