@@ -7,12 +7,12 @@ import java.util.EventObject;
 
 public class MatchupChangedEvent extends EventObject
 {
-   public final ArrayList<Matchup> newMatchups;
+   public final ArrayList<Matchup> _newMatchups;
 
    public MatchupChangedEvent(Object source, ArrayList<Matchup> newMatchups)
    {
       super(source);
-      this.newMatchups = newMatchups;
+      this._newMatchups = newMatchups;
    }
 
 

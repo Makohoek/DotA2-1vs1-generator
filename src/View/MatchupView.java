@@ -9,34 +9,34 @@ import java.util.ArrayList;
 
 public class MatchupView implements MatchupListenerIface
 {
-   private final JFrame frame;
-   private final MatchupGeneratorPanel matchupGeneratorPanel;
+   private final JFrame _frame;
+   private final MatchupGeneratorPanel _matchupGeneratorPanel;
 
    public MatchupView(MatchupController matchupController)
    {
-      frame = new JFrame("Dota2 1vs1 generator");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      _frame = new JFrame("DotaDuel");
+      _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      matchupGeneratorPanel = new MatchupGeneratorPanel(matchupController);
+      _matchupGeneratorPanel = new MatchupGeneratorPanel(matchupController);
 
-      frame.getContentPane().add(matchupGeneratorPanel.getMainPanel());
+      _frame.getContentPane().add(_matchupGeneratorPanel.getMainPanel());
 
-      frame.pack();
-      frame.setVisible(true);
+      _frame.pack();
+      _frame.setVisible(true);
    }
 
    @Override
    public void matchupsChanged(MatchupChangedEvent event)
    {
-      ArrayList<Matchup> newMatchups = event.newMatchups;
+      ArrayList<Matchup> newMatchups = event._newMatchups;
 
       for (Matchup newMatchup : newMatchups)
       {
          System.out.println(newMatchup);
-         matchupGeneratorPanel.addMatchup(newMatchup);
+         _matchupGeneratorPanel.addMatchup(newMatchup);
       }
 
-      frame.pack();
-      frame.setBounds(frame.getBounds());
+      _frame.pack();
+      _frame.setBounds(_frame.getBounds());
    }
 }

@@ -6,9 +6,9 @@ import javax.swing.*;
 
 public class HeroPanel
 {
-   private JLabel HeroNameField;
-   private JLabel HeroIcon;
-   private JPanel mainPanel;
+   private JLabel _heroNameField;
+   private JLabel _heroIcon;
+   private JPanel _mainPanel;
 
    public HeroPanel(Hero hero)
    {
@@ -17,14 +17,20 @@ public class HeroPanel
       String pathToHeroIcon = "resources/img/"+lowerCaseHeroName+"_full.png";
       ImageIcon heroIcon = new ImageIcon(pathToHeroIcon);
 
-      HeroNameField.setText(heroName);
-      HeroIcon.setIcon(heroIcon);
+      _heroNameField.setText(heroName);
+      _heroIcon.setIcon(heroIcon);
 
-      //mainPanel.setBackground(new Color(45, 45, 43));
+      setStyle();
+   }
+
+   private void setStyle()
+   {
+      StyleSetter.setBackground(_mainPanel);
+      StyleSetter.setFont(_heroNameField);
    }
 
    public JPanel getPanel()
    {
-      return mainPanel;
+      return _mainPanel;
    }
 }

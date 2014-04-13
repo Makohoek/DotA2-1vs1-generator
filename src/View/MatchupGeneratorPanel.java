@@ -11,31 +11,40 @@ import java.util.ArrayList;
 
 public class MatchupGeneratorPanel
 {
-   private JButton GenerateButton;
-   private JPanel mainPanel;
-   private JPanel HeroesPanel;
-   private JScrollPane scrollPane;
-   private final ArrayList<JPanel> addedHeroesList;
-   private final MatchupController controller;
+   private JButton _generateButton;
+   private JPanel _mainPanel;
+   private JPanel _heroesPanel;
+   @SuppressWarnings("Unused") // scrollpane is necessary when adding a large amount of random matchups
+   private JScrollPane _scrollPane;
+   private final ArrayList<JPanel> _addedHeroesList;
+   private final MatchupController _controller;
 
    public MatchupGeneratorPanel(MatchupController controller)
    {
-      //mainPanel.setBackground(new Color(45, 45, 43));
-      HeroesPanel.setLayout(new GridLayout(0, 2));
-      addedHeroesList = new ArrayList<JPanel>();
+      _heroesPanel.setLayout(new GridLayout(0, 2));
+      _addedHeroesList = new ArrayList<JPanel>();
 
       AddEventsToButtons();
-      this.controller = controller;
+      this._controller = controller;
+
+      setStyle();
+   }
+
+   private void setStyle()
+   {
+      StyleSetter.setBackground(_mainPanel);
+      StyleSetter.setBackground(_heroesPanel);
+      StyleSetter.setButton(_generateButton);
    }
 
    public JPanel getMainPanel()
    {
-      return mainPanel;
+      return _mainPanel;
    }
 
    private void AddEventsToButtons()
    {
-      GenerateButton.addActionListener(new ActionListener()
+      _generateButton.addActionListener(new ActionListener()
       {
          @Override
          public void actionPerformed(ActionEvent actionEvent)
@@ -47,24 +56,24 @@ public class MatchupGeneratorPanel
 
    void buttonExecuted()
    {
-      for (JPanel addedHeroPanel : addedHeroesList)
-         HeroesPanel.remove(addedHeroPanel);
+      for (JPanel addedHeroPanel : _addedHeroesList)
+         _heroesPanel.remove(addedHeroPanel);
 
-      addedHeroesList.clear();
+      _addedHeroesList.clear();
 
-      controller.notifyButtonPressed();
+      _controller.notifyButtonPressed();
    }
 
    public void addMatchup(Matchup matchup)
    {
-      JPanel radiantHeroPanel = new HeroPanel(matchup.radiant).getPanel();
-      JPanel direHeroPanel = new HeroPanel(matchup.dire).getPanel();
+      JPanel radiantHeroPanel = new HeroPanel(matchup._radiantHero).getPanel();
+      JPanel direHeroPanel = new HeroPanel(matchup._direHero).getPanel();
 
-      HeroesPanel.add(radiantHeroPanel);
-      HeroesPanel.add(direHeroPanel);
+      _heroesPanel.add(radiantHeroPanel);
+      _heroesPanel.add(direHeroPanel);
 
-      addedHeroesList.add(radiantHeroPanel);
-      addedHeroesList.add(direHeroPanel);
+      _addedHeroesList.add(radiantHeroPanel);
+      _addedHeroesList.add(direHeroPanel);
    }
 
 }
